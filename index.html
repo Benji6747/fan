@@ -3,12 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Fan</title>
+    <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="index.css" /> -->
+
     <style>
-body{
-background-color: #ffc700;
-}
+
+
 
 #back{
     width: 300px;
@@ -348,6 +349,7 @@ border-top-left-radius: 20px;
 border-top-right-radius: 20px;
 border-bottom-left-radius: 10px;
 border-bottom-right-radius: 10px;
+
 }
 
 #standdown{
@@ -360,24 +362,27 @@ border-bottom-right-radius: 10px;
 border-top-right-radius: 20px;
 border-bottom-left-radius: 10px;
 border-bottom-right-radius: 10px;
+
 }
 
 #down{
     width: 200px;
     height: 200px;
+    /* border: 5px solid rgb(48, 10, 10); */
     border-top-right-radius: 100px;
     border-top-left-radius: 100px;
     border-bottom-left-radius: 80px;
     border-bottom-right-radius: 80px;
-    background-color: rgb(41, 38, 38);
+    background-color: rgb(0, 0, 0);
     margin-left: 65px;
     margin-top: -100px;
     position: relative;
     z-index: -1;
+    transform: rotateX(300deg);
 
 }
 #bladeout{
-    animation: move 1s infinite linear;
+    /* animation: move 5s infinite linear; */
     position: relative;
     z-index: -1;
 }
@@ -386,12 +391,88 @@ border-bottom-right-radius: 10px;
     100%{transform:rotate(360deg);}
 }
 
-</style>
-    <script src="main.js"></script>
+
+#radio{
+    visibility: hidden;
+}
+
+#state{
+    color: red;
+    font-size: 30px;
+    font-weight: 700;
+    margin-left: 140px;
+    padding-top: 40px;
+}
+
+button{
+    font-size: 30px;
+    color: white;
+    background-color: blue;
+    margin: 5px;
+    font-weight: 700;
+    border-radius: 10px;
+    border: none;
+    letter-spacing: 2px;
+}
+button:hover{
+    color: blue;
+    background-color: white;
+}
+
+#on{
+    background-color: chartreuse;
+
+}
+
+#on:hover{
+    background-color: white;
+    color: chartreuse;;
+}
+
+#of{
+    background-color: red;
+    
+}
+
+#of:hover{
+    background-color: white;
+    color:red;
+}
+
+#buttons{
+    background-color: #ffc700;
+    width: 700px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+@media (max-width:952px){
+    #buttons{
+        width: 600px;
+    }
+}
+
+    </style>
+    <!-- <script src="main.js"></script> -->
 
 </head>
 <body>
-   
+        <div id="buttons">
+        <input type="radio" id="radio"><button onclick="onn();" id="on">ONN</button>
+  <button onclick="one();" >ONE</button>
+<button onclick="two();">TWO</button>   
+<button onclick="three();">THREE</button>
+<button onclick="four();">FOUR</button>
+    <button onclick="return off();" id="of">OFF</button>
+    
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
     <div id="back">
         <div id="iner1">
@@ -449,14 +530,91 @@ border-bottom-right-radius: 10px;
             
     </div>
     <br>
-    <br>
+
     <h1>DELRON</h1>
+    <br>
+    <br>
+    <h1 id="state">OFF</h1>
+    
 
     <div id="standtop"></div>
     <div id="middle"></div>
     <div id="standdown"></div>
     <div id="down"></div>
 
+    
+    <script>
+            var mycheck=document.getElementById('radio');
+            var state=document.getElementById('state');
+            function onn(){        
+        mycheck.checked=true;
+                // document.getElementById('iner5').style.backgroundColor="red";
+        document.getElementById('bladeout').style.animation="move 5.0s infinite linear";
+        
+        state.innerHTML="ON";
+        state.style.color="lime";
+        state.style.marginLeft="150px";
+            }
+
+            function one(){
+                    if(mycheck.checked==true){
+                        state.innerHTML="L1";
+                        document.getElementById('bladeout').style.animation="move 2.0s infinite linear";
+                    }
+                   else{
+                           alert("PLEASE SWITCH ONN THE FAN");
+                   }                   
+            }
+
+            function two(){
+                if(mycheck.checked==true){
+                        state.innerHTML="L2";
+                    document.getElementById('bladeout').style.animation="move 1.5s infinite linear";
+            }
+            
+            else{
+                           alert("PLEASE SWITCH ONN THE FAN");
+                   } 
+        }
+
+            function three(){
+                if(mycheck.checked==true){
+                        state.innerHTML="L3";
+                    document.getElementById('bladeout').style.animation="move 1.0s infinite linear";
+            }
+            
+            else{
+                           alert("PLEASE SWITCH ONN THE FAN");
+                   }          
+                   }
+
+            function four(){
+                if(mycheck.checked==true){
+                        state.innerHTML="L4";
+                    document.getElementById('bladeout').style.animation="move 0.5s infinite linear";
+            }
+            
+            else{
+                           alert("PLEASE SWITCH ONN THE FAN");
+                   }   
+                          }
+
+
+          function off(){
+                  if(mycheck.checked==true){                     
+                   state.style.color="red";
+                    state.style.marginLeft="140px";
+                    mycheck.checked=false;
+                    state.innerHTML="OFF";
+                    document.getElementById('bladeout').style.animation="move 5.0s  linear";
+
+            }
+            
+            else{
+                           alert("PLEASE SWITCH ONN THE FAN");
+                   } 
+                          }
+    </script>
     
 </body>
 </html>
